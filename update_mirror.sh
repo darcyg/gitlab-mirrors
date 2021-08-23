@@ -66,7 +66,7 @@ if git config --get svn-remote.svn.url &> /dev/null;then
     git config --bool core.bare false
   fi
   git reset --hard
-  git svn fetch
+  ${GITPROXY} git svn fetch
   git svn rebase
 
   if ! ${no_remote_set};then
@@ -86,7 +86,7 @@ else
   if ${prune_mirrors};then
     prune_opt="--prune"
   fi
-  git fetch ${force_opt} ${prune_opt} origin
+  ${GITPROXY} git fetch ${force_opt} ${prune_opt} origin
 
   if ! ${no_remote_set};then
     #push to the remote

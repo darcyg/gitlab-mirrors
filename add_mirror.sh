@@ -433,7 +433,7 @@ if ${git};then
     git config remote.gitlab.mirror true
     #Check the initial repository into gitlab
     green_echo "Checking the mirror into gitlab." 1>&2
-    git fetch
+    ${GITPROXY} git fetch
     if ${http_remote};then
       git config credential.helper store
     fi
@@ -465,7 +465,7 @@ elif ${svn};then
     #Check the initial repository into gitlab
     green_echo "Checking the mirror into gitlab." 1>&2
     git reset --hard
-    git svn fetch
+    ${GITPROXY} git svn fetch
     cd .git
     git config --bool core.bare true
     if ${http_remote};then

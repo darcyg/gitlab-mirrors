@@ -9,3 +9,6 @@ if [ ! -f "${git_mirrors_dir}/config.sh" ];then
   red_echo "config.sh missing!  Copy and customize from config.sh.SAMPLE.  Aborting." 1>&2
   exit 1
 fi
+
+GITPROXY=(cat /config/git)
+[ "$GITPROXY" == "git" ] && GITPROXY=
