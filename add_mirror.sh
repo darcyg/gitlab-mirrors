@@ -422,7 +422,7 @@ if ${git};then
   #create a mirror
   green_echo "Creating mirror from ${mirror}" 1>&2
   cd "${repo_dir}/${gitlab_namespace}"
-  git clone --mirror "${mirror}" "${project_name}"
+  ${GITPROXY} git clone --mirror "${mirror}" "${project_name}"
   cd "${project_name}"
   #add the gitlab remote
   if ! ${no_remote_set};then
@@ -450,9 +450,9 @@ elif ${svn};then
   green_echo "Creating mirror from ${mirror}" 1>&2
   cd "${repo_dir}/${gitlab_namespace}"
   if [ ! -z "${authors_file}" ];then
-    git svn clone "${mirror}" "${project_name}" ${git_svn_additional_options} --authors-file="${authors_file}"
+    ${GITPROXY} git svn clone "${mirror}" "${project_name}" ${git_svn_additional_options} --authors-file="${authors_file}"
   else
-    git svn clone "${mirror}" "${project_name}" ${git_svn_additional_options}
+    ${GITPROXY} git svn clone "${mirror}" "${project_name}" ${git_svn_additional_options}
   fi
   #add the gitlab remote
   if ! ${no_remote_set};then
@@ -481,7 +481,7 @@ elif ${bzr};then
   #create a mirror
   green_echo "Creating mirror from ${mirror}" 1>&2
   cd "${repo_dir}/${gitlab_namespace}"
-  git clone --mirror bzr::"${mirror}" "${project_name}"
+  ${GITPROXY} git clone --mirror bzr::"${mirror}" "${project_name}"
   # cleaning repo
   cd "${project_name}"
   git gc --aggressive
@@ -505,7 +505,7 @@ elif ${hg};then
   #create a mirror
   green_echo "Creating mirror from ${mirror}" 1>&2
   cd "${repo_dir}/${gitlab_namespace}"
-  git clone --mirror hg::"${mirror}" "${project_name}"
+  ${GITPROXY} git clone --mirror hg::"${mirror}" "${project_name}"
   # cleaning repo
   cd "${project_name}"
   git gc --aggressive
