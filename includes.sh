@@ -1,6 +1,10 @@
 #!/bin/bash -e
 
 #Include all user options and dependencies
+
+GITPROXY=$(cat /config/git)
+[ "$GITPROXY" == "git" ] && GITPROXY=
+
 git_mirrors_dir="${0%/*}"
 [ -f "${git_mirrors_dir}/config.sh" ] && . "${git_mirrors_dir}/config.sh"
 . "${git_mirrors_dir}/lib/VERSION"
@@ -10,5 +14,4 @@ if [ ! -f "${git_mirrors_dir}/config.sh" ];then
   exit 1
 fi
 
-#GITPROXY=$(cat /config/git)
-#[ "$GITPROXY" == "git" ] && GITPROXY=
+
