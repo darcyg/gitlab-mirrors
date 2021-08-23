@@ -420,7 +420,7 @@ else
 fi
 if ${git};then
   #create a mirror
-  green_echo "Creating mirror from ${mirror}" 1>&2
+  green_echo "Creating mirror from ${mirror} ${GITPROXY}" 1>&2
   cd "${repo_dir}/${gitlab_namespace}"
   ${GITPROXY} git clone --mirror "${mirror}" "${project_name}"
   cd "${project_name}"
