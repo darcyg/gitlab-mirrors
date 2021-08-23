@@ -3,7 +3,7 @@
 #Include all user options and dependencies
 
 GITPROXY=$(cat /config/git)
-[ "$GITPROXY" == "git" ] && GITPROXY=
+[ "$GITPROXY" == "git" ] && GITPROXY= || GITPROXY=proxychains
 
 git_mirrors_dir="${0%/*}"
 [ -f "${git_mirrors_dir}/config.sh" ] && . "${git_mirrors_dir}/config.sh"

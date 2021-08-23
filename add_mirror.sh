@@ -395,6 +395,8 @@ if ${http_remote};then
   CREATE_OPTS="--http ${CREATE_OPTS}"
 fi
 
+[ -n "${GITPROXY}" ] && green_echo "USE PROXYCHAINS SOCKS5 COMMANDA: ${GITPROXY}"
+
 #Get the remote gitlab url for the specified project.
 #If the project doesn't already exist in gitlab then create it.
 if ! ${no_remote_set} && [ -z "${no_create}" ];then
@@ -420,7 +422,7 @@ else
 fi
 if ${git};then
   #create a mirror
-  green_echo "Creating mirror from ${mirror} ${GITPROXY}" 1>&2
+  green_echo "Creating mirror from ${mirror} " 1>&2
   cd "${repo_dir}/${gitlab_namespace}"
   ${GITPROXY} git clone --mirror "${mirror}" "${project_name}"
   cd "${project_name}"
