@@ -10,5 +10,5 @@ if [ ! -f "${git_mirrors_dir}/config.sh" ];then
   exit 1
 fi
 
-GITPROXY=(cat /config/git)
+GITPROXY=$(cat /config/git)
 [ "$GITPROXY" == "git" ] && GITPROXY=
