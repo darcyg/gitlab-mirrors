@@ -57,7 +57,7 @@ def find_group(**kwargs):
   return _find_matches(groups, kwargs, False)
 
 def find_project(**kwargs):
-  projects = git.projects.list(all=True)
+  projects = git.projects.list(iterator=False)
   return _find_matches(projects, kwargs, False)
 
 def _find_matches(objects, kwargs, find_all):
