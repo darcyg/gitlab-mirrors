@@ -53,11 +53,11 @@ else:
   git=gitlab.Gitlab(gitlab_url,token_secret,ssl_verify=True,api_version=gitlab_api_version)
 
 def find_group(**kwargs):
-  groups = git.groups.list(all_available=False)
+  groups = git.groups.list(all=True)
   return _find_matches(groups, kwargs, False)
 
 def find_project(**kwargs):
-  projects = git.projects.list(as_list=True)
+  projects = git.projects.list(all=True)
   return _find_matches(projects, kwargs, False)
 
 def _find_matches(objects, kwargs, find_all):
